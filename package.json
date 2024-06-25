@@ -15,6 +15,8 @@
     "add-build": "git add dist"
   },
   "dependencies": {
+    "async-mutex": "^0.5.0",
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

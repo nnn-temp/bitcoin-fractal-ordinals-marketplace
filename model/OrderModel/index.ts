@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  avatar: { type: String },
-  inviteLink: { type: String, require: true, unique: true },
-  referrerId: { type: String },
-  mnemonic: { type: String, unique: true, sparse: true },
-  tempMnemonic: { type: String },
-  date: { type: Date, default: Date.now },
-  role: { type: Number, default: 0 },
+  ordinalId: { type: String, required: true, unique: true },
+  price: { type: Number, required: true },
+  sellerPaymentAddress: { type: String, required: true },
+  sellerOrdinalPublicKey: { type: String, required: true },
+  status: { type: String, required: true },
+  ordinalUtxoTxId: { type: String, required: true },
+  ordinalUtxoVout: { type: Number, requred: true },
+  serviceFee: { type: Number, required: true },
+  signedListingPSBT: { type: String, required: true },
 });
 
 const OrderModel = mongoose.model("order", OrderSchema);
