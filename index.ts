@@ -6,10 +6,13 @@ import path from "path";
 
 import { PORT, connectMongoDB } from "./config";
 import http from "http";
-import ListingRouter from "./routes/ListingRoute/create-listing.route";
 
 import { Mutex } from "async-mutex";
+
+import ListingRouter from "./routes/ListingRoute/create-listing.route";
 import SaveListingRouter from "./routes/ListingRoute/save-listing.route";
+import DeleteListingRouter from "./routes/ListingRoute/delete-listing.route";
+import UpdateListingRouter from "./routes/ListingRoute/update-listing.route";
 
 export const flagMutex = new Mutex();
 export const iterator = new Mutex();
@@ -40,6 +43,8 @@ const server = http.createServer(app);
 // Define routes for different API endpoints
 app.use("/api", ListingRouter);
 app.use("/api", SaveListingRouter);
+app.use("/api", DeleteListingRouter);
+app.use("/api", UpdateListingRouter);
 
 // Define a route to check if the backend server is running
 app.get("/", async (req: any, res: any) => {
