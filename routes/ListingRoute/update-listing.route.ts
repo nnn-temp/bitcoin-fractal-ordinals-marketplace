@@ -149,33 +149,43 @@ UpdateListingRouter.post(
         return res.status(400).json({ error: "This Ordinal is not exist." });
       }
 
-      // Get Inscription UTXO info from inscription id
-      const ordinalUTXO = await getInscriptionInfo(
-        sellerOrdinalId,
-        networkType ?? ""
-      );
+      // Check the request value is valid comparing with existing database data
+      if (
+        ordinalExists.sellerPaymentAddress == sellerPaymentAddress &&
+        ordinalExists.sellerOrdinalPublicKey == sellerOrdinalPublicKey
+      ) {
+        // Get Inscription UTXO info from inscription id
+        const ordinalUTXO = await getInscriptionInfo(
+          sellerOrdinalId,
+          networkType ?? ""
+        );
 
-      // Create new instance to save new Order
-      const updateOrderData: IOrderData = {
-        ordinalId: sellerOrdinalId,
-        price: +sellerOrdinalPrice,
-        sellerPaymentAddress: sellerPaymentAddress,
-        sellerOrdinalPublicKey: sellerOrdinalPublicKey,
-        status: "Active",
-        ordinalUtxoTxId: ordinalUTXO.txid,
-        ordinalUtxoVout: ordinalUTXO.vout,
-        serviceFee: +sellerOrdinalPrice / 100,
-        signedListingPSBT: signedListingPSBT,
-      };
+        // Create new instance to save new Order
+        const updateOrderData: IOrderData = {
+          ordinalId: sellerOrdinalId,
+          price: +sellerOrdinalPrice,
+          sellerPaymentAddress: sellerPaymentAddress,
+          sellerOrdinalPublicKey: sellerOrdinalPublicKey,
+          status: "Active",
+          ordinalUtxoTxId: ordinalUTXO.txid,
+          ordinalUtxoVout: ordinalUTXO.vout,
+          serviceFee: +sellerOrdinalPrice / 100,
+          signedListingPSBT: signedListingPSBT,
+        };
 
-      // Update with new Order Data
-      const updatedOrder = await Order.findOneAndUpdate(
-        { ordinalId: sellerOrdinalId },
-        updateOrderData,
-        { new: true }
-      );
+        // Update with new Order Data
+        const updatedOrder = await Order.findOneAndUpdate(
+          { ordinalId: sellerOrdinalId },
+          updateOrderData,
+          { new: true }
+        );
 
-      return res.status(200).send({ data: updatedOrder });
+        return res.status(200).send({ data: updatedOrder });
+      } else {
+        return res.status(500).send({
+          error: "Request Data is not match with existing database data.",
+        });
+      }
     } catch (error: any) {
       console.log(error.message);
       return res.status(500).send({ error });

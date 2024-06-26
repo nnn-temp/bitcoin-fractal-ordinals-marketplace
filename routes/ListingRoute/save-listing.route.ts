@@ -5,7 +5,7 @@ import Order from "../../model/OrderModel";
 import * as Bitcoin from "bitcoinjs-lib";
 import ecc from "@bitcoinerlab/secp256k1";
 import { getInscriptionInfo } from "../../utils/unisat.api";
-import { IOrderData } from "../../utils/types";
+import { ACTIVE, IOrderData } from "../../utils/types";
 
 Bitcoin.initEccLib(ecc);
 
@@ -44,8 +44,10 @@ SaveListingRouter.post(
       } = req.body;
 
       // Check if this ordinalId exists on database.
-      const ordinalExists = await Order.findOne({ ordinalId: sellerOrdinalId });
-      if (ordinalExists) {
+      const ordinalExists: any = await Order.findOne({
+        ordinalId: sellerOrdinalId,
+      });
+      if (ordinalExists.status == ACTIVE) {
         return res
           .status(400)
           .json({ error: "This Ordinal is already listed." });
@@ -63,7 +65,7 @@ SaveListingRouter.post(
         price: +sellerOrdinalPrice,
         sellerPaymentAddress: sellerPaymentAddress,
         sellerOrdinalPublicKey: sellerOrdinalPublicKey,
-        status: "Active",
+        status: ACTIVE,
         ordinalUtxoTxId: ordinalUTXO.txid,
         ordinalUtxoVout: ordinalUTXO.vout,
         serviceFee: +sellerOrdinalPrice / 100,
@@ -73,8 +75,20 @@ SaveListingRouter.post(
       // Create new order Data schema
       const newOrder = new Order({ ...newOrderData });
 
-      // Save new Order Data
-      const savedOrder = await newOrder.save();
+      let savedOrder: any = {};
+
+      if (ordinalExists) {
+        savedOrder = await Order.findOneAndUpdate(
+          { ordinalId: sellerOrdinalId },
+          newOrderData,
+          {
+            new: true,
+          }
+        );
+      } else {
+        // Save new Order Data
+        savedOrder = await newOrder.save();
+      }
 
       return res.status(200).send({ data: savedOrder });
     } catch (error: any) {

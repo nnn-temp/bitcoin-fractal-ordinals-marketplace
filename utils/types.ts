@@ -1,3 +1,7 @@
+export const ACTIVE = "Active";
+export const PENDING = "Pending";
+export const SOLD = "Sold";
+
 export interface IOrderData {
   ordinalId: string;
   price: number;

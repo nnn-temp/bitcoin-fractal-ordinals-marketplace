@@ -5,6 +5,7 @@ import Order from "../../model/OrderModel";
 import * as Bitcoin from "bitcoinjs-lib";
 import ecc from "@bitcoinerlab/secp256k1";
 import { getInscriptionInfo } from "../../utils/unisat.api";
+import { ACTIVE, IOrderData } from "../../utils/types";
 
 Bitcoin.initEccLib(ecc);
 
@@ -41,8 +42,10 @@ ListingRouter.post(
       } = req.body;
 
       // Check if this ordinalId exists on database.
-      const ordinalExists = await Order.findOne({ ordinalId: sellerOrdinalId });
-      if (ordinalExists) {
+      const ordinalExists: any = await Order.findOne({
+        ordinalId: sellerOrdinalId,
+      });
+      if (ordinalExists.status == ACTIVE) {
         return res
           .status(500)
           .json({ error: "This Ordinal is already listed." });
