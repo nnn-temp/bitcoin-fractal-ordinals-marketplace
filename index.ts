@@ -6,9 +6,10 @@ import path from "path";
 
 import { PORT, connectMongoDB } from "./config";
 import http from "http";
-import OrderRouter from "./routes/OrderRoute";
+import ListingRouter from "./routes/ListingRoute/create-listing.route";
 
 import { Mutex } from "async-mutex";
+import SaveListingRouter from "./routes/ListingRoute/save-listing.route";
 
 export const flagMutex = new Mutex();
 export const iterator = new Mutex();
@@ -37,12 +38,16 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 const server = http.createServer(app);
 
 // Define routes for different API endpoints
-app.use("/api", OrderRouter);
+app.use("/api", ListingRouter);
+app.use("/api", SaveListingRouter);
 
 // Define a route to check if the backend server is running
 app.get("/", async (req: any, res: any) => {
   res.send("Backend Server is Running now!");
 });
+
+// Set Global Variable Iterator for unisat api distribution
+app.locals.iterator = 0;
 
 // Start the Express server to listen on the specified port
 server.listen(PORT, () => {

@@ -1,6 +1,7 @@
 import { flagMutex, iterator } from "..";
 import app from "..";
 
+// Set flag variable for Unisat API rate limit overcoming
 export const setUtxoFlag = async (value: number) => {
   const release = await flagMutex.acquire();
   try {
@@ -11,6 +12,7 @@ export const setUtxoFlag = async (value: number) => {
   }
 };
 
+// Wait flag variable until false for 200ms for Unisat API rate limit overcoming
 export async function waitUtxoFlag() {
   return new Promise<void>((resolve, reject) => {
     let intervalId: any;
@@ -29,6 +31,7 @@ export async function waitUtxoFlag() {
   });
 }
 
+// Set Unisat API Iterator global variable using Mutex module
 export const setApiIterator = async (value: number) => {
   const release = await iterator.acquire();
   try {

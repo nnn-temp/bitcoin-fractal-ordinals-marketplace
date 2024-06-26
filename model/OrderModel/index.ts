@@ -8,7 +8,7 @@ const OrderSchema = new mongoose.Schema({
   status: { type: String, required: true },
   ordinalUtxoTxId: { type: String, required: true },
   ordinalUtxoVout: { type: Number, requred: true },
-  serviceFee: { type: Number, required: true },
+  serviceFee: { type: Number },
   signedListingPSBT: { type: String, required: true },
 });
 

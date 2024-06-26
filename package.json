@@ -15,9 +15,11 @@
     "add-build": "git add dist"
   },
   "dependencies": {
+    "@bitcoinerlab/secp256k1": "^1.1.1",
     "async-mutex": "^0.5.0",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
+    "bitcoinjs-lib": "^6.1.6",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "cron": "^3.1.6",
