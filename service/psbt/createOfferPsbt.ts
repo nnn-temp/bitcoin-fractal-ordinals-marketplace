@@ -16,7 +16,7 @@ initEccLib(ecc as any);
 export const createOfferPsbt = async (createOfferData: any): Promise<any> => {
   // Fetch buyer's payment wallet utxo array
   let utxos = await getBtcUtxoInfo(
-    createOfferData.sellerPaymentAddress,
+    createOfferData.buyerPaymentAddress,
     networkType
   );
 
@@ -71,5 +71,11 @@ export const createOfferPsbt = async (createOfferData: any): Promise<any> => {
     redeemFee
   );
 
-  return { isSuccess: true, data: psbt.toHex() };
+  // Create signInputArray
+  let signInputArray = [];
+  for (let i = 0; i < psbt.inputCount; i++) {
+    signInputArray.push(i);
+  }
+
+  return { isSuccess: true, data: psbt.toHex(), inputs: signInputArray };
 };

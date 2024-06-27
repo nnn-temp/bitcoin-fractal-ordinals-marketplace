@@ -24,6 +24,7 @@ CreateOfferRouter.post(
     "buyerPaymentPublicKey",
     "BuyerPaymentPublicKey is required"
   ).notEmpty(),
+  check("feeRate", "FeeRate is required.").notEmpty(),
 
   async (req: Request, res: Response) => {
     try {
@@ -33,15 +34,16 @@ CreateOfferRouter.post(
         return res.status(500).json({ error: errors.array() });
       }
       // Getting parameter from request
-      const {
+      let {
         ordinalId,
         buyerPaymentAddress,
         buyerOrdinalAddress,
         buyerPaymentPublicKey,
+        feeRate,
       } = req.body;
 
-      // Get feeRateTier from request data
-      const feeRateTier: string = req.body.feeRateTier ?? HALFHOURFEE;
+      // Change FeeRate to number
+      feeRate = +feeRate;
 
       // Check if this ordinalId exists on database.
       const ordinalData = await Order.findOne({ ordinalId: ordinalId });
@@ -60,7 +62,7 @@ CreateOfferRouter.post(
         buyerPaymentAddress,
         buyerOrdinalAddress,
         buyerPaymentPublicKey,
-        feeRateTier,
+        feeRate,
       };
 
       // Create Psbt for create buyer offer
@@ -68,11 +70,11 @@ CreateOfferRouter.post(
 
       // Send Psbt to frontend
       if (response.isSuccess) {
-        return res.status(200).json({ data: response.data });
-      } else {
         return res
-          .status(500)
-          .json({ error: "Failed real buyer psbt creating." });
+          .status(200)
+          .json({ psbt: response.data, inputs: response.inputs });
+      } else {
+        return res.status(500).json({ error: response.data });
       }
     } catch (error: any) {
       console.log(error.message);
