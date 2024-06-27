@@ -64,7 +64,16 @@ CreateOfferRouter.post(
       };
 
       // Create Psbt for create buyer offer
-      await createOfferPsbt(createOfferData);
+      const response = await createOfferPsbt(createOfferData);
+
+      // Send Psbt to frontend
+      if (response.isSuccess) {
+        return res.status(200).json({ data: response.data });
+      } else {
+        return res
+          .status(500)
+          .json({ error: "Failed real buyer psbt creating." });
+      }
     } catch (error: any) {
       console.log(error.message);
       return res.status(500).send({ error });

@@ -71,5 +71,5 @@ export const createOfferPsbt = async (createOfferData: any): Promise<any> => {
     redeemFee
   );
 
-  return { isSuccess: true, data: psbt };
+  return { isSuccess: true, data: psbt.toHex() };
 };
