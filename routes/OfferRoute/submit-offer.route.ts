@@ -61,7 +61,14 @@ SubmitOfferRouter.post(
       const joinedPsbt: Bitcoin.Psbt =
         Bitcoin.Psbt.fromBase64(joinedPsbtbased64);
 
-      joinedPsbt.finalizeAllInputs().extractTransaction();
+      // Finalize real psbt and extract transaction
+      const psbtHex: string = joinedPsbt
+        .finalizeAllInputs()
+        .extractTransaction(true)
+        .toHex();
+
+      console.log(psbtHex);
+      return res.status(200).send({ txId: "test" });
     } catch (error: any) {
       console.log(error.message);
       return res.status(500).send({ error });
