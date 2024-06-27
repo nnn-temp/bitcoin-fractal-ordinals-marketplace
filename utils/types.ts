@@ -1,7 +1,3 @@
-export const ACTIVE = "Active";
-export const PENDING = "Pending";
-export const SOLD = "Sold";
-
 export interface IOrderData {
   ordinalId: string;
   price: number;
@@ -12,4 +8,17 @@ export interface IOrderData {
   ordinalUtxoVout: string;
   serviceFee: number;
   signedListingPSBT: string;
+}
+
+export interface IUtxo {
+  txid: string;
+  vout: number;
+  value: number;
+}
+
+export interface IInscriptionUtxo {
+  txid: string;
+  vout: number;
+  value: number;
+  address: string;
 }

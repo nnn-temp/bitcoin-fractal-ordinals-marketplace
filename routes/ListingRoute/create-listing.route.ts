@@ -1,11 +1,11 @@
 import { Request, Response, Router } from "express";
 import { check, validationResult } from "express-validator";
-import networkType, { TESTNET } from "../../config/config";
+import { TESTNET, networkType } from "../../config/config";
 import Order from "../../model/OrderModel";
 import * as Bitcoin from "bitcoinjs-lib";
 import ecc from "@bitcoinerlab/secp256k1";
 import { getInscriptionInfo } from "../../utils/unisat.api";
-import { ACTIVE, IOrderData } from "../../utils/types";
+import { ACTIVE } from "../../config/config";
 
 Bitcoin.initEccLib(ecc);
 

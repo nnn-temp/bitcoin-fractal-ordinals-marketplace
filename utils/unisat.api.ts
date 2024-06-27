@@ -3,12 +3,8 @@ import { TESTNET } from "../config/config";
 import dotenv from "dotenv";
 import { setApiIterator, setUtxoFlag, waitUtxoFlag } from "./mutex";
 import app from "..";
+import { IInscriptionUtxo, IUtxo } from "./types";
 
-interface IUtxo {
-  txid: string;
-  vout: number;
-  value: number;
-}
 // Configuration from .env file
 dotenv.config();
 
@@ -44,10 +40,11 @@ export const getInscriptionInfo = async (
 
     await setUtxoFlag(0);
     const inscriptionInfo = res.data;
-    const info: IUtxo = {
+    const info: IInscriptionUtxo = {
       txid: inscriptionInfo.data.utxo.txid,
       vout: inscriptionInfo.data.utxo.vout,
       value: inscriptionInfo.data.utxo.satoshi,
+      address: inscriptionInfo.data.address,
     };
 
     return info;
@@ -82,7 +79,7 @@ export const getBtcUtxoInfo = async (address: string, networkType: string) => {
 
   let cursor = 0;
   const size = 5000;
-  let utxos: IUtxo[] = [];
+  let utxos: any = [];
 
   while (1) {
     const res = await axios.get(url, { ...config, params: { cursor, size } });
