@@ -12,6 +12,7 @@ export const MONGO_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env
 export const PORT = process.env.PORT || 9000;
 
 export const TESTNET = "testnet";
+export const MAINNET = "mainnet";
 export const networkType = process.env.NETWORKTYPE ?? "";
 
 export const ACTIVE = "Active";

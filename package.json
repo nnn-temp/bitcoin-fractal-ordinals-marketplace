@@ -1,12 +1,13 @@
 {
-  "name": "apex-backend",
+  "name": "ordinal-marketplace-api-backend",
   "version": "1.0.0",
-  "description": "APEX-Backend",
+  "description": "Ordinal Marketplace API Backend",
   "main": "index.ts",
   "pre-commit": [
     "ts.check",
     "build"
   ],
+  "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev index.ts",
     "start": "ts-node index.ts",

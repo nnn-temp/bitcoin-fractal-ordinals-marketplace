@@ -3,7 +3,7 @@ import { check, validationResult } from "express-validator";
 import Order from "../../model/OrderModel";
 import * as Bitcoin from "bitcoinjs-lib";
 import ecc from "@bitcoinerlab/secp256k1";
-import { ACTIVE } from "../../config/config";
+import { ACTIVE, MAINNET, TESTNET, networkType } from "../../config/config";
 import { getJoinedPsbt } from "../../utils/getBlock.api";
 
 Bitcoin.initEccLib(ecc);
@@ -52,10 +52,10 @@ SubmitOfferRouter.post(
       ).toBase64();
 
       // Join Psbt function
-      const joinedPsbtbased64: string = await getJoinedPsbt([
-        SellerPsbtBase64,
-        BuyerPsbtBase64,
-      ]);
+      const joinedPsbtbased64: string = await getJoinedPsbt(
+        [SellerPsbtBase64, BuyerPsbtBase64],
+        networkType
+      );
 
       // Extract real Psbt, but not finalized
       const joinedPsbt: Bitcoin.Psbt =
@@ -67,8 +67,7 @@ SubmitOfferRouter.post(
         .extractTransaction(true)
         .toHex();
 
-      console.log(psbtHex);
-      return res.status(200).send({ txId: "test" });
+      return res.status(200).send({ txHex: psbtHex });
     } catch (error: any) {
       console.log(error.message);
       return res.status(500).send({ error });

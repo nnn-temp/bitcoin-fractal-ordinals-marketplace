@@ -1,6 +1,7 @@
 import axios from "axios";
 import dotenv from "dotenv";
 import { setUtxoFlag, waitUtxoFlag } from "./mutex";
+import { TESTNET } from "../config/config";
 
 // Configuration from .env file
 dotenv.config();
@@ -9,14 +10,21 @@ dotenv.config();
 const getBlockAPI: string = process.env.GET_BLOCK_API ?? "";
 
 // Get JoinedPsbt from two psbts using go.getblock.io
-export const getJoinedPsbt = async (psbtArray: Array<string>): Promise<any> => {
+export const getJoinedPsbt = async (
+  psbtArray: Array<string>,
+  networkType: string
+): Promise<any> => {
   try {
     // Wait for getblock api rate protection
     await waitUtxoFlag();
     await setUtxoFlag(1);
 
     // Request URL
-    const url = `https://go.getblock.io/${getBlockAPI}/`;
+    const url = `https://go.getblock.io/${
+      networkType == TESTNET
+        ? process.env.GET_BLOCK_API_TESTNET
+        : process.env.GET_BLOCK_API_MAINNET
+    }/`;
 
     // Request data
     const data = {
