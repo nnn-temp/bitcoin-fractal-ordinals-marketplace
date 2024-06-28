@@ -6,8 +6,8 @@ info:
   version: 0.0.1
 
 servers:
+  - url: "https://ordinals-marketplace-api-backend.onrender.com/api"
   - url: "http://localhost:9000/api"
-  - url: "https://bitmap-community-marketplace-api-backend/api"
 
 tags:
   - name: Listing
