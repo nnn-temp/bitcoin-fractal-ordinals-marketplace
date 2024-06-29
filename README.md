@@ -1,106 +1,190 @@
 
-# Node Express Backend Boilerplate
+# Ordinalsbot Marketplace API
 
-This boilerplate provides a foundation for building a Node.js backend server using Express. It includes user authentication features such as user signup and signin. Additionally, it is designed to seamlessly deploy on Vercel for easy scalability and hosting.
+ordinalsbot marketplace api backend is a Node.js project providing RESTful API endpoints for managing marketplace listings and offers using MongoDB. This project integrates essential middleware, environment variable configurations, and includes detailed API documentation via Swagger UI.
 
-## Highlights
+## Table of Contents
+- [Configuration](#configuration)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [MongoDB Schema](#mongodb-schema)
+- [Swagger Documentation](#swagger-documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-- User signup: Register new users with unique usernames and passwords.
-- User signin: Allow registered users to authenticate and access protected resources.
-- User referral: User can refer someone and check if user signup by referral.
-- User Authentication: Secure routes and endpoints using JWT (JSON Web Tokens) for authentication.
-- Vercel deployment: Optimized for deployment on the Vercel platform for seamless hosting and scalability.
+## Configuration
+Configuration settings are sourced from a `.env` file and a config module. Ensure you have the necessary environment variables set up in your `.env` file.
 
-## Technologies Used
+## Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/rezzecup/ordinalsbot-marketplace-api-backend.git
+    cd ordinalsbot-marketplace-api-backend
+    ```
 
-- **Node.js**: A JavaScript runtime environment for building scalable and efficient server-side applications.
-- **Express.js**: A minimalist web framework for Node.js, providing a robust set of features for web and mobile applications.
-- **JWT (JSON Web Tokens)**: A compact, URL-safe means of representing claims to be transferred between two parties. It's used for securing routes and endpoints.
-- **Vercel**: A cloud platform for static sites and Serverless Functions, providing seamless deployment and scalability.
+2. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-## Getting Started
+3. Create an `.env` file and add your environment variables:
+    ```plaintext
+    NETWORKTYPE=TESTNET
+    PORT=3000
+    MONGODB_URI=mongodb://localhost:27017/ordinalsbot
+    ```
+    You can reference .env.example file configuration.
 
-1. **Clone the repository**:
-
-   ```
-   git clone https://github.com/dapp-sculptor/node-express-boilerplate.git
-   ```
-
-2. **Install dependencies**:
-
-   ```
-   cd your-project
-   npm install
-   ```
-
-3. **Set up environment variables**:
-
-   Create a `.env` file in the root directory of your project and add the following variables:
-
-   ```
-   # JWT token secret key
-   JWT_SECRET = 
-
-   # DB CONFIGURATION
-   DB_NAME = 
-   DB_USERNAME = 
-   DB_PASSWORD = 
-   DB_HOST = 
-   DB_PORT = 
-
-   # PORT
-   PORT = 
-   ```
-
-4. **Start the server**:
-
-   ```
-   npm start
-   ```
-
-   This will start the server at `http://localhost:9000` by default.
+4. Start the server:
+    ```bash
+    npm start
+    ```
 
 ## Usage
+After starting the server, the application will be running on the specified port. By default, it is set to port 3000. You can access the backend running status at `http://localhost:3000` and see the Swagger API documentation at `http://localhost:3000/api-docs`.
 
-- **Signup Endpoint**:
-  - Endpoint: `POST /api/signup`
-  - Request body:
-    ```json
-    {
-      "username": "example",
-      "email": "example",
-      "password": "example",
-      "encodedReferrer": "example"
-    }
-    ```
-- **Signin Endpoint**:
-  - Endpoint: `POST /api/signin`
-  - Request body:
-    ```json
-    {
-      "username": "example",
-      "password": "password"
-    }
-    ```
+## API Endpoints
+The following routes are available in the application:
+- `POST /api/create-listing`: Create a new listing.
+- `POST /api/save-listing`: Save listing data.
+- `DELETE /api/delete-listing`: Delete an existing listing.
+- `PUT /api/update-listing`: Update an existing listing.
+- `POST /api/create-offer`: Create a new offer for a listing.
+- `POST /api/submit-offer`: Submit an offer for a listing.
 
-## Deployment on Vercel
+## MongoDB Schema
+The MongoDB schema used in this project is as follows:
 
-To deploy your backend on Vercel:
+```javascript
+import mongoose from "mongoose";
 
-1. Sign up or log in to your Vercel account.
-2. Import your project repository.
-3. Follow the Vercel deployment instructions.
+const OrderSchema = new mongoose.Schema({
+  ordinalId: { type: String, required: true, unique: true },
+  price: { type: Number, required: true },
+  sellerPaymentAddress: { type: String, required: true },
+  sellerOrdinalPublicKey: { type: String, required: true },
+  status: { type: String, required: true },
+  ordinalUtxoTxId: { type: String, required: true },
+  ordinalUtxoVout: { type: Number, requred: true },
+  serviceFee: { type: Number },
+  signedListingPSBT: { type: String, required: true },
+});
 
-## 💭 Feedback and Contributing
+const OrderModel = mongoose.model("order", OrderSchema);
 
-🙏 Is anyone willing to build more valuable and exciting project, plz contact.
+export default OrderModel;
+```
 
-⛏ Let's build it together!! ⛏
+## Swagger Documentation
+Swagger UI is integrated to provide an interactive API documentation. You can access it at `http://localhost:3000/api-docs`. This documentation will dynamically reflect the API endpoints of the application.
 
-### Connect With Me:
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am "Add new feature"`).
+4. Push your branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
 
-[![Twitter Badge](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/brjpka)
-[![Mail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nikolic.miloje0507@gmail.com)
-[![Telegram Badge](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/mylord1_1)
-[![Skype Badge](https://img.shields.io/badge/Skype-00AFF0?style=for-the-badge&logo=skype&logoColor=white)](https://join.skype.com/ubWuVGchDEnU)
-[![Discord Badge](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/509337382810550280)
+## License
+This project is licensed under the MIT License.
+
+## Additional Informations
+## Tags
+
+- **Listing:** Operations related to managing listings on the marketplace
+- **Offer:** Operations related to making offers and purchasing ordinals
+
+## Endpoints
+
+### Create Listing
+
+- **Endpoint:** `/create-listing`
+- **Method:** POST
+- **Summary:** This endpoint lists one or more ordinals for sale on the marketplace.
+- **Description:** This endpoint is used to list ordinals for sale. It returns a Partially Signed Bitcoin Transaction (PSBT) which the owner must sign. The buyer must provide the unspent transaction output (UTXO) covering the price and fees, with the seller's signature required only during the initial listing.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `CreateListing`
+- **Responses:**
+  - **200:** Create Listing Success!
+  - **500:** Create Listing failed!
+
+### Save Listing
+
+- **Endpoint:** `/save-listing`
+- **Method:** POST
+- **Summary:** Save listing is part of the create listing process.
+- **Description:** After receiving a PSBT from the `create-listing` endpoint, this signed PSBT must be saved in the listing database through this endpoint.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `SaveListing`
+- **Responses:**
+  - **200:** Save Listing Success!
+  - **500:** Save Listing failed!
+
+### Relist
+
+- **Endpoint:** `/relist`
+- **Method:** POST
+- **Summary:** Update an existing marketplace listing with a new price.
+- **Description:** This endpoint updates an existing listing with a new price and returns a PSBT needing the seller's signature. The signed PSBT must be confirmed via `/marketplace/confirm-relist` for the changes to take effect.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `UpdateListing`
+- **Responses:**
+  - **200:** Update Listing Request Success!
+  - **500:** Update Listing Request failed!
+
+### Confirm Relist
+
+- **Endpoint:** `/confirm-relist`
+- **Method:** POST
+- **Summary:** Confirm the updated marketplace listing.
+- **Description:** Confirms the price update to an existing listing. Returns a PSBT which must be signed and returned to `/marketplace/confirm-relist`.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `ConfirmUpdateListing`
+- **Responses:**
+  - **200:** Delete Listing Success!
+  - **500:** Delete Listing failed!
+
+### Delist
+
+- **Endpoint:** `/delist`
+- **Method:** POST
+- **Summary:** Delete an existing marketplace listing.
+- **Description:** Deletes an ordinal listing from the marketplace. The process involves creating and signing a transaction, which is then confirmed via `/confirm-delist` to transfer the ordinal back to the seller.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `DeleteListing`
+- **Responses:**
+  - **200:** Update Listing Success!
+  - **500:** Update Listing failed!
+
+### Create Offer
+
+- **Endpoint:** `/create-offer`
+- **Method:** POST
+- **Summary:** Create a transaction to purchase an ordinal listed for sale.
+- **Description:** Generates a PSBT to be signed by the potential buyer. A platform fee of 1% is applied only upon the sale.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `CreateOffer`
+- **Responses:**
+  - **200:** Create Offer Success!
+  - **500:** Create Offer failed!
+
+### Submit Offer
+
+- **Endpoint:** `/submit-offer`
+- **Method:** POST
+- **Summary:** Complete the purchase of an ordinal.
+- **Description:** Submits a signed PSBT to complete the purchase. A platform fee of 1% is applied to the seller upon a successful sale.
+- **RequestBody:**
+  - **Content Type:** `application/json`
+  - **Schema:** `SubmitOffer`
+- **Responses:**
+  - **200:** Submit Offer Success!
+  - **500:** Submit Offer failed!
