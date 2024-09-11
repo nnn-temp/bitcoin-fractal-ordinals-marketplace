@@ -83,7 +83,7 @@ Swagger UI is integrated to provide an interactive API documentation. You can ac
 Contributions are welcome! Please follow these steps:
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am "Add new feature"`).
+3. Commit your changes (`git commit -m "Add new feature"`).
 4. Push your branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
 
