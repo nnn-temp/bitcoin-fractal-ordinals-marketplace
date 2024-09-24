@@ -1,14 +1,14 @@
 
-# Ordinal Marketplace Backend
+# Fractal Ordinal Marketplace
 
-Ordinal Marketplace Backend is a Node.js project providing RESTful API endpoints for managing marketplace listings and offers using MongoDB. This project integrates essential middleware, environment variable configurations, and includes detailed API documentation via Swagger UI.
+This is an Ordinal/NFT marketplace operating on the Fractal Bitcoin network, where users can list their Ordinals for sale. Buyers can explore and purchase listed Ordinals according to Ordinal Theory within the Fractal ecosystem.
 
 ## Table of Contents
 - [Configuration](#configuration)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [MongoDB Schema](#mongodb-schema) 
+- [MongoDB Schema](#mongodb-schema)
 - [Swagger Documentation](#swagger-documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -19,8 +19,8 @@ Configuration settings are sourced from a `.env` file and a config module. Ensur
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/rizzolib/ordinal-marketplace.git 
-    cd ordinal-marketplace
+    git clone https://github.com/rizzolib/fractal-ordinal-marketplace.git 
+    cd fractal-ordinal-marketplace
     ```
 
 2. Install the dependencies:
@@ -32,7 +32,7 @@ Configuration settings are sourced from a `.env` file and a config module. Ensur
     ```plaintext
     NETWORKTYPE=TESTNET
     PORT=3000
-    MONGODB_URI=mongodb://localhost:27017/ordinalsbot
+    MONGODB_URI=mongodb://localhost:27017/fractal-ordinal-marketplace
     ```
     You can reference .env.example file configuration.
 
@@ -102,8 +102,8 @@ This project is licensed under the MIT License.
 
 - **Endpoint:** `/create-listing`
 - **Method:** POST
-- **Summary:** This endpoint lists one or more ordinals for sale on the marketplace.
-- **Description:** This endpoint is used to list ordinals for sale. It returns a Partially Signed Bitcoin Transaction (PSBT) which the owner must sign. The buyer must provide the unspent transaction output (UTXO) covering the price and fees, with the seller's signature required only during the initial listing.
+- **Summary:** This endpoint lists one or more ordinals for sale on the marketplace for fractal network.
+- **Description:** This endpoint is used to list ordinals for sale on fractal network.. It returns a Partially Signed Bitcoin Transaction (PSBT) which the owner must sign. The buyer must provide the unspent transaction output (UTXO) covering the price and fees, with the seller's signature required only during the initial listing.
 - **RequestBody:**
   - **Content Type:** `application/json`
   - **Schema:** `CreateListing`
@@ -155,7 +155,7 @@ This project is licensed under the MIT License.
 - **Endpoint:** `/delist`
 - **Method:** POST
 - **Summary:** Delete an existing marketplace listing.
-- **Description:** Deletes an ordinal listing from the marketplace. The process involves creating and signing a transaction, which is then confirmed via `/confirm-delist` to transfer the ordinal back to the seller.
+- **Description:** Deletes an ordinal listing from the marketplace. The process involves creating and signing a transaction, which is then confirmed via `/confirm-delist` to transfer the ordinal back to the seller on fractal network.
 - **RequestBody:**
   - **Content Type:** `application/json`
   - **Schema:** `DeleteListing`
@@ -167,7 +167,7 @@ This project is licensed under the MIT License.
 
 - **Endpoint:** `/create-offer`
 - **Method:** POST
-- **Summary:** Create a transaction to purchase an ordinal listed for sale.
+- **Summary:** Create a transaction to purchase an ordinal listed for sale on fractal network.
 - **Description:** Generates a PSBT to be signed by the potential buyer. A platform fee of 1% is applied only upon the sale.
 - **RequestBody:**
   - **Content Type:** `application/json`
@@ -180,7 +180,7 @@ This project is licensed under the MIT License.
 
 - **Endpoint:** `/submit-offer`
 - **Method:** POST
-- **Summary:** Complete the purchase of an ordinal.
+- **Summary:** Complete the purchase of an ordinal on fractal network.
 - **Description:** Submits a signed PSBT to complete the purchase. A platform fee of 1% is applied to the seller upon a successful sale.
 - **RequestBody:**
   - **Content Type:** `application/json`
@@ -188,3 +188,8 @@ This project is licensed under the MIT License.
 - **Responses:**
   - **200:** Submit Offer Success!
   - **500:** Submit Offer failed!
+
+### Contact Info
+
+- **Twiter:**  https://x.com/rez_cats/
+- **Discord:** https://discord.com/users/190208149569929217/ (@rezzecup89)
