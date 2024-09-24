@@ -1,7 +1,7 @@
 
-# Ordinalsbot Marketplace API
+# Ordinal Marketplace Backend
 
-ordinalsbot marketplace api backend is a Node.js project providing RESTful API endpoints for managing marketplace listings and offers using MongoDB. This project integrates essential middleware, environment variable configurations, and includes detailed API documentation via Swagger UI.
+Ordinal Marketplace Backend is a Node.js project providing RESTful API endpoints for managing marketplace listings and offers using MongoDB. This project integrates essential middleware, environment variable configurations, and includes detailed API documentation via Swagger UI.
 
 ## Table of Contents
 - [Configuration](#configuration)
