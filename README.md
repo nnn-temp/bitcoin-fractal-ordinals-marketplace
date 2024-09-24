@@ -190,6 +190,7 @@ This project is licensed under the MIT License.
   - **500:** Submit Offer failed!
 
 ### Contact Info
+I just showed initial functionalities in this public repository for fractal ordinal marketplace development.
 
 - **Twiter:**  https://x.com/rez_cats/
 - **Discord:** https://discord.com/users/190208149569929217/ (@rezzecup89)
