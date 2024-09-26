@@ -7,7 +7,7 @@ This is an Ordinal/NFT marketplace operating on the Fractal Bitcoin network, whe
 - [Configuration](#configuration)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Endpoints](#api-endpoints)
+- [API Endpoints](#api-endpoints) 
 - [MongoDB Schema](#mongodb-schema)
 - [Swagger Documentation](#swagger-documentation)
 - [Contributing](#contributing)
