@@ -11,7 +11,7 @@ This is an Ordinal/NFT marketplace operating on the Fractal Bitcoin network, whe
 - [MongoDB Schema](#mongodb-schema)
 - [Swagger Documentation](#swagger-documentation)
 - [Contributing](#contributing)
-- [License](#license)
+- [License](#license) 
 
 ## Configuration
 Configuration settings are sourced from a `.env` file and a config module. Ensure you have the necessary environment variables set up in your `.env` file.
