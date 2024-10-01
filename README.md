@@ -13,7 +13,7 @@ This is an Ordinal/NFT marketplace operating on the Fractal Bitcoin network, whe
 - [Contributing](#contributing) 
 - [License](#license) 
 
-## Configuration
+## Configuration 
 Configuration settings are sourced from a `.env` file and a config module. Ensure you have the necessary environment variables set up in your `.env` file.
 
 ## Installation
