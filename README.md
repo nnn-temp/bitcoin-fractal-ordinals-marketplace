@@ -87,8 +87,6 @@ Contributions are welcome! Please follow these steps:
 4. Push your branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
 
-## License
-This project is licensed under the MIT License.
 
 ## Additional Informations
 ## Tags
@@ -193,5 +191,10 @@ This project is licensed under the MIT License.
 ### Contact Info
 I have developed a fractal ordinal marketplace, based on previous ordinal marketplace developments on the Bitcoin mainnet. The initial functionalities are showcased in this public repository for the fractal ordinal marketplace. For further technical support or development assistance, please contact me here.  
 
-- **Telegram:** @rizz_cat
-- **Discord:** @rezzecup89
+Telegram: [@dwlee918](https://t.me/@dwlee918)
+
+X: [@derricklee918](https://x.com/derricklee918)
+
+Discord: [@muratcanbey.](https://discordapp.com/users/348484668448047107)
+
+Thanks.
