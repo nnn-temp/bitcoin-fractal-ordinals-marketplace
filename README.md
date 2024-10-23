@@ -1,5 +1,5 @@
 
-# Fractal Ordinal Marketplace
+# Fractal Ordinals Marketplace
 
 This is an Ordinal/NFT marketplace operating on the Fractal Bitcoin network, where users can list their Ordinals for sale. Buyers can explore and purchase listed Ordinals according to Ordinal Theory within the Fractal ecosystem.
 
@@ -19,8 +19,8 @@ Configuration settings are sourced from a `.env` file and a config module. Ensur
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/rizzolib/fractal-ordinal-marketplace.git 
-    cd fractal-ordinal-marketplace
+    git clone https://github.com/bitman310/fractal-ordinals-marketplace.git 
+    cd fractal-ordinals-marketplace
     ```
 
 2. Install the dependencies:
@@ -32,7 +32,7 @@ Configuration settings are sourced from a `.env` file and a config module. Ensur
     ```plaintext
     NETWORKTYPE=TESTNET
     PORT=3000
-    MONGODB_URI=mongodb://localhost:27017/fractal-ordinal-marketplace
+    MONGODB_URI=mongodb://localhost:27017/fractal-ordinals-marketplace
     ```
     You can reference .env.example file configuration.
 
