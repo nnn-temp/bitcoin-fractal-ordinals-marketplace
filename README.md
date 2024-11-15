@@ -191,10 +191,10 @@ Contributions are welcome! Please follow these steps:
 ### Contact Info
 I have developed a fractal ordinal marketplace, based on previous ordinal marketplace developments on the Bitcoin mainnet. The initial functionalities are showcased in this public repository for the fractal ordinal marketplace. For further technical support or development assistance, please contact me here.  
 
-Telegram: [@dwlee918](https://t.me/@dwlee918)
+Telegram: [@diasibt](https://t.me/@diasibt)
 
-X: [@derricklee918](https://x.com/derricklee918)
+X: [@DiasIbt101](https://x.com/DiasIbt101)
 
-Discord: [@muratcanbey.](https://discordapp.com/users/348484668448047107)
+Discord: [@dias_ishbulatov](https://discordapp.com/users/1213745904599961631)
 
 Thanks.
