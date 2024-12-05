@@ -76,9 +76,6 @@ const OrderModel = mongoose.model("order", OrderSchema);
 export default OrderModel;
 ```
 
-## Swagger Documentation
-Swagger UI is integrated to provide an interactive API documentation. You can access it at `http://localhost:3000/api-docs`. This documentation will dynamically reflect the API endpoints of the application.
-
 ## Contributing
 Contributions are welcome! Please follow these steps:
 1. Fork the repository.
@@ -188,8 +185,7 @@ Contributions are welcome! Please follow these steps:
   - **500:** Submit Offer failed!
   
 
-### Contact Info
-I have developed a fractal ordinal marketplace, based on previous ordinal marketplace developments on the Bitcoin mainnet. The initial functionalities are showcased in this public repository for the fractal ordinal marketplace. For further technical support or development assistance, please contact me here.  
+### Contact Info 
 
 Telegram: [@diasibt](https://t.me/@diasibt)
 
