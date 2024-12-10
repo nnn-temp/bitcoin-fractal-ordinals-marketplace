@@ -104,20 +104,3 @@ ListingRouter.post(
 );
 
 export default ListingRouter;
-
-/////////////////////////////////////////////////    Unisat Wallet SignPsbt  /////////////////////////////////////////////////////////////////
-
-// await window.unisat.signPsbt(
-//   "70736274ff01005e020000000170a6e661c44956513b2d287991dcfc64a502d0ee5c44783e7e714d7ac2f4d7bf0100000000ffffffff01a0860100000000002251207c1b43035013f2888cb2a352f05a270a27c00f3d62800582924b1c1b4497170c000000000001012b22020000000000002251207c1b43035013f2888cb2a352f05a270a27c00f3d62800582924b1c1b4497170c011720cde4d7fa3f66b13c61279a3a78fd3623428bc69d7e65c770a0fdfd6ea3b0758d0000",
-//   {
-//       autoFinalized: false,
-//       toSignInputs: [
-//           {
-//               index: 0,
-//               address: "tb1p0sd5xq6sz0eg3r9j5df0qk38pgnuqreav2qqtq5jfvwpk3yhzuxqjyttjy"
-//           }
-//       ]
-//   }
-// )
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
