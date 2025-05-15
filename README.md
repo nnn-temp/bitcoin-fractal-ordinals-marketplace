@@ -19,7 +19,7 @@ Configuration settings are sourced from a `.env` file and a config module. Ensur
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/bitman310/fractal-ordinals-marketplace.git 
+    git clone https://github.com/bitman09/fractal-ordinals-marketplace.git 
     cd fractal-ordinals-marketplace
     ```
 
@@ -187,8 +187,8 @@ Contributions are welcome! Please follow these steps:
 
 ### Contact Info 
 
-LinkedIn: [@Ljubomir Igic](https://www.linkedin.com/in/ljubomir-igic-6a9615340)
+LinkedIn: [@Dias Ishbulatov](https://www.linkedin.com/in/dias-ishbulatov)
 
-Telegram: [@Ljubomir Igic](https://t.me/@ljubomir_igic)
+Telegram: [@Bitman09](https://t.me/@bitman09)
 
 Thanks.
