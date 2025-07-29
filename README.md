@@ -38,8 +38,8 @@ A comprehensive backend API for trading Bitcoin Ordinals on the Fractal network.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/bitman09/fractal-ordinals-marketplace.git
-   cd fractal-ordinals-marketplace
+   git clone https://github.com/michalstefanow/bitcoin-fractal-ordinals-marketplace
+   cd bitcoin-fractal-ordinals-marketplace
    ```
 
 2. **Install dependencies**
@@ -161,7 +161,7 @@ POST /api/create-offer
 ## 📁 Project Structure
 
 ```
-fractal-ordinals-marketplace/
+bitcoin-fractal-ordinals-marketplace/
 ├── config/                 # Configuration files
 │   ├── config.ts          # Environment and app config
 │   ├── db.ts              # Database connection
