@@ -291,8 +291,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Contact
 
-- **Telegram**: [@michalstefanow](https://t.me/mylord1_1)
-- **Twitter**: [@MichalStefanow](https://x.comin/michalstefanow/)
+- **Telegram**: [@mooneagle](https://t.me/mooneagle)
 
 ## 🙏 Acknowledgments
 
