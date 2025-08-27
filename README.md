@@ -291,7 +291,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Contact
 
-- **Telegram**: [@mooneagle](https://t.me/mooneagle)
+- **Telegram**: [@mooneagle](https://t.me/@mooneagle1_1)
 
 ## 🙏 Acknowledgments
 
